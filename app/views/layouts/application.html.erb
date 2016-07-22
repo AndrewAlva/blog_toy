@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorBlog</title>
+    <title><%= full_title(yield(:title)) %></title>
+
+    <meta property="og:url" content="<%= request.original_url  %>">
+	<meta name="author" content="Andrew Alva">
+	<meta name="twitter:card" content="summary_large_image">
+  	<meta name="twitter:site" content="@Andrew__Alva">
+  	<meta name="twitter:creator" content="@Andrew__Alva">
+	
+	<meta property="og:url" content="<%= request.original_url  %>">
+	<meta name='title' content='<%= full_title(yield(:title)) %>'>
+	<meta property='og:title' content='<%= full_title(yield(:title)) %>'>
+	<meta name='twitter:title' content='<%= full_title(yield(:title)) %>'>
+	<meta name='image' content='<%= image_meta(yield(:image)) %>'>
+	<meta property='og:image' content='<%= image_meta(yield(:image)) %>'>
+	<meta name='twitter:image' content='<%= image_meta(yield(:image)) %>'>
+	<meta name='description' content='<%= description_meta(yield(:description)) %>'>
+	<meta property='og:description' content='<%= description_meta(yield(:description)) %>'>
+	<meta name='twitter:description' content='<%= description_meta(yield(:description)) %>'>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="body-<%=yield(:title)%>">
+  	<nav>
+  		<ul>
+  			<li><%= link_to 'Home', root_path %></li>
+  			<li><%= link_to 'Blog', '/blog' %></li>
+  			<li><%= link_to 'About', '/about' %></li>
+  			<li><%= link_to 'Contact', '/contact' %></li>
+  		</ul>
+
+  		<ul>
+  			<% if current_user %>
+  				<li><%= current_user.email %></li>
+  			<% end -%>
+
+  			<%= render 'devise/menu/registration_items' %>
+ 			<%= render 'devise/menu/login_items' %>
+  		</ul>
+  	</nav>
     <%= yield %>
   </body>
 </html>
