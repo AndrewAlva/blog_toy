@@ -8,6 +8,10 @@ body {
 
   &.body-Blog{
     background-color: #ff6600;
+
+    li{
+      color: red;
+    }
   }
   &.body-About{
     background-color: #6600ff;
