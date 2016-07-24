@@ -38,12 +38,8 @@
   		</ul>
 
   		<ul>
-  			<% if current_user %>
-  				<li><%= current_user.email %></li>
-  			<% end -%>
-
   			<%= render 'devise/menu/registration_items' %>
- 			<%= render 'devise/menu/login_items' %>
+ 			  <%= render 'devise/menu/login_items' %>
   		</ul>
   	</nav>
     <%= yield %>
