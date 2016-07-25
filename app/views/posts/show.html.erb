@@ -17,7 +17,17 @@
 <p>
   <strong>Image:</strong>
   <%= @post.image %>
+  <%= @post.comments %>
 </p>
+
+<p>
+	<!-- Escrito por <%= link_to "#{@post.author.email}", post_path(@post) %> -->
+	<!-- Escrito por <%= link_to "#{@post.author.email}", @post %> -->
+	Escrito por <%= link_to "#{@post.author.email}", user_posts_path(@post.author) %>
+</p>
+
+<%= render '/comments/new', object: @post %>
+<%= render '/comments/index', object: @post.comments %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

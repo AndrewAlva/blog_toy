@@ -5,12 +5,20 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @posts = user.posts
+
+      # Alternate Syntax
+      @posts = Post.where(:author_id => params[:user_id])
+    else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
+  def show  
   end
 
   # GET /posts/new
@@ -26,6 +34,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+
+    @post.author = current_user
 
     respond_to do |format|
       if @post.save
