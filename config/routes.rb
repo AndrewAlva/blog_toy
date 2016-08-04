@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/about' => 'statics#about'
   get '/contact' => 'statics#contact'
+  get '/giving' => 'giving#index'
 
   # get 'users/:id' => 'users#show', as: user
 

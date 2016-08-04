@@ -1,0 +1,5 @@
+<% object.each do |comment| %>
+	Id: <%= comment.id %> <br>
+	<%= comment.content %> <br>
+	Commented by: <%= comment.user.email %> at: <%= comment.created_at.strftime("%T") %> <br>
+<% end %>

@@ -1,0 +1,9 @@
+<li> Post ID: <%= object.id %> </li>
+<%= object.description %> <br>
+<%= object.created_at.strftime("%T") %> <br><br>
+
+<p>Comments</p>
+<%= render "/comments/new", object: object %> <br>
+<div class="comments-list">
+	<%= render "/giving/show-comments", object: object.comments %> <br>
+</div>

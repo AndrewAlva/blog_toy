@@ -1,2 +1,6 @@
-<li>Escrito por <%= object.user.email %> el <%= object.created_at.strftime("%d/%m/%Y") %> <br> <%= object.content %></li>
+<li>
+	<strong><%= object.user.email %></strong> said: <br>
+	<div class='comment_<%="#{object.id}" %>' > <%= object.content %> </div>
+	<div class='comment_<%="#{object.id}" %>' > <%= object.created_at.strftime("%d/%m/%Y") %> at <%= object.created_at.strftime("%H:%M") %> </div>
+</li>
 <!-- http://apidock.com/ruby/DateTime/strftime -->
